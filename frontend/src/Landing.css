@@ -1,0 +1,32 @@
+.landing {
+  width: 100%;
+  height: 100vh;
+  position: relative;
+  overflow: hidden;
+}
+
+.land {
+  width: 100%;
+  height: 100%;
+}
+
+.land img {
+  width: 100%;
+  height: 100%;
+  object-fit:cover;
+}
+
+.next-button {
+  position: absolute;
+  bottom: 50px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.next-button button {
+  padding: 12px 30px;
+  font-size: 18px;
+  cursor: pointer;
+  border-radius: 10px;
+  background-color:ghostwhite;
+}
