@@ -15,10 +15,38 @@ function Home(){
             </div>
             <div className="body">
             <div className="profile">
-               <h1>pro</h1>
+               <div className="profile-sec">
+                  <p>profile  img  edit  etc</p>
+               </div>
+               <div className="resume-update">
+                  <p>resume-update</p>
+               </div>
+               <div className="user-description">
+                  <p>user-description</p>
+               </div>
+               <div className="user-wants-to-post">
+                  <p>post</p>
+               </div>
+               <div className="user-wants-to-see-his-post">
+                  <p> see post</p>
+               </div>
+               <div className="users-count">
+                  <p>users-count </p>
+               </div>
             </div>
             <div className="posts">
-               <h1>hi</h1>
+               <div className="posted-user-profile">
+                        <p>profile</p>
+               </div>
+               <div className="posted-user-image">
+                        <p>image</p>
+               </div>
+               <div className="posted-user-description">
+                        <p>posted-user-description</p>
+               </div>
+               <div className="peoples-comment">
+                        <p>posted-user-description</p>
+               </div>
             </div>
             </div>
         </div>
