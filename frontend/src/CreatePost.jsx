@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import "./CreatePost.css"
 function CreatePost(){
     return(
-        <div className="createpost">
+        <div className="home">
             <div className="navbar">
                 <div className="application-name"><h2>ChithNext</h2></div>
                  <div className="nav-links">
@@ -15,43 +15,29 @@ function CreatePost(){
             </div>
             <div className="body">
             <div className="profile">
-               <div className="profile-pic">
-                  <p>here profile pic</p>
+               <div className="profile-sec">
+                  <p>profile  img  edit  etc</p>
                </div>
-               <div className="resume">
-                  <button className="resume-upload">Update resume</button>
+               <div className="resume-update">
+                  <p>resume-update</p>
                </div>
-               <div className="description">
-                  <button className="update-description">Update description</button>
+               <div className="user-description">
+                  <p>user-description</p>
                </div>
-               <div className="user-posting">
-               <Link to="/create-post">
-                      <button className="user-want-to-post">
-                        Post
-                     </button>
+               <Link to ="/create-post" className="user-wants-to-post">
+                  Post
                </Link>
+               <div className="user-wants-to-see-his-post">
+                  <p> see post</p>
                </div>
-               <div className="user-old-posts">
-                  <button className="user-want-to-see-old-posts"> Your Posts </button>
-               </div>
-               <div className="community-count">
-                  <p>total people</p>
+               <div className="users-count">
+                  <p>users-count </p>
                </div>
             </div>
             <div className="posting-page">
-         <input
-            type="file"
-            accept="image/*"
-            />
-            <br></br>
-            <textarea
-            placeholder="write  something">
-
-            </textarea>
-
-            <button>Publish</button>                
+               <p>place  to  choose  file  and  write  description for  you  post </p>               
             </div>
-            </div>   
+            </div>
         </div>
     );
 }
