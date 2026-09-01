@@ -21,15 +21,15 @@ function  SeePost(){
                <Link to ="/upload-resume" className="resume-update">
                   Upload Resume
                </Link>
-               <div className="user-description">
-                  <p>user-description</p>
-               </div>
+               <Link to ="/description-of-user" className="user-description">
+                  user-description
+               </Link>
                <Link to ="/create-post" className="user-wants-to-post">
                   Post
                </Link>
-               <div className="user-wants-to-see-his-post">
-                  <p> see post</p>
-               </div>
+               <Link to ="/see-post" className="user-wants-to-see-his-post">
+                 see posts
+               </Link>
                <div className="users-count">
                   <p>users-count </p>
                </div>
