@@ -1,8 +1,8 @@
-import {Link} from "react-router-dom";
-import "./UserDescription.css" ;
-function UserDescription(){
+import { Link } from "react-router-dom";
+import "./Find.css"
+function Find(){
     return(
-        <div className="home">
+        <div className="Find">
             <div className="navbar">
                 <div className="application-name"><h2>ChithNext</h2></div>
                  <div className="nav-links">
@@ -34,16 +34,12 @@ function UserDescription(){
                   <p>users-count </p>
                </div>
             </div>
-            <div className="user-description-writing-space">
-              <div className="heading">
-               <h2>please  enter  your  complete professional  description </h2>
-              </div>
-              <div className="descripion-typeing-space">
-                 enter your  description
-              </div>
+            <div className="finding-part">
+                <h1>hi</h1>
             </div>
             </div>
-        </div>        
+
+        </div>
     );
 }
-export default UserDescription ;
+export  default Find ;

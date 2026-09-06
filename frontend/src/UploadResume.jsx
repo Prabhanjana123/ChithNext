@@ -35,7 +35,13 @@ function UploadResume(){
                </div>
             </div>
             <div className="resume-uploading-space">
-              <p>place to  upload  resume </p>
+              <h1>add  you   add  resume add  showcase  your  talent </h1>
+              <div className="add-resume">
+              <button className="resume-add-button"> add  resume </button>
+              </div>
+              <div className="see-ur-existing-resume">
+                 these  are  ur  existing resumes 
+              </div>
             </div>
             </div>
         </div>        

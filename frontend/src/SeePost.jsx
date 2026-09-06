@@ -35,7 +35,12 @@ function  SeePost(){
                </div>
             </div>
             <div className="user-old-post-space">
-              <p>user-old-post-space</p>
+              <div className="heading">
+                <h2>revisit your journey </h2>
+              </div>
+              <div className="see-your-post">
+                   <h1>see you  posts</h1>  
+              </div>
             </div>
             </div>
         </div>        

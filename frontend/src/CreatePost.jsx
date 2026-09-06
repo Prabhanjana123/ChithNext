@@ -1,6 +1,11 @@
-import { Link } from "react-router-dom";
+import { Link ,useNavigate} from "react-router-dom";
+import { useState } from "react";
 import "./CreatePost.css"
 function CreatePost(){
+   const [description,setDescription] = useState("");
+   const [image,setImage] = useState(null);
+
+   const navigate =   useNavigate() ;
     return(
         <div className="home">
             <div className="navbar">
@@ -35,7 +40,37 @@ function CreatePost(){
                </div>
             </div>
             <div className="posting-page">
-               <p>place  to  choose  file  and  write  description for  you  post </p>               
+               <div className="user-posting-image">
+                 <label htmlFor="posting-image">
+                   choose image
+                  </label> 
+
+                  <input id = "posting-image"
+                  type = "file"
+                  accept="image/*"
+                  onChange={(e)=> setImage(e.target.files[0])} 
+                  />
+                  </div> 
+                  {image && (
+
+                     <div className="image-preview">
+                        <img 
+                            src ={URL.createObjectURL(image)}
+                            alt = "preview"
+                            />
+                     </div>
+                  )} 
+
+                  <div className="user-posting-description">
+                       <textarea
+                       placeholder="what  do you  want  to post "
+                       value = {description}
+                       onChange={(e)=>setDescription(e.target.value)}
+                       />   
+                  </div> 
+              <button className="post_button">
+                   Post
+                  </button>  
             </div>
             </div>
         </div>

@@ -2,10 +2,12 @@ import Landing from "./Landing.jsx";
 import Home from "./Home.jsx";
 import CreatePost from "./CreatePost";
 import UploadResume  from "./UploadResume.jsx";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Router } from "react-router-dom";
 import UserDescription from "./UserDescription.jsx";
 import SeePost from "./SeePost.jsx";
-
+import Find from "./Find.jsx";
+import Oppurtunity from "./Oppurtunity.jsx";
+import Message from "./Message.jsx";
 function App() {
   return (
     <BrowserRouter>
@@ -16,6 +18,9 @@ function App() {
         <Route path ="/upload-resume" element={<UploadResume/>}/>
         <Route path="/description-of-user" element={<UserDescription/>}/>
         <Route path="/see-post" element={<SeePost/>}/>
+        <Route path = "/find"  element={<Find/>}/>
+        <Route path = "/oppurtunities" element={<Oppurtunity/>}/>
+        <Route path ="/msg" element={<Message/>}/>
       </Routes>
     </BrowserRouter>
   );
