@@ -29,6 +29,9 @@
     align-items: center;
     display: flex;
     color: black;
+    background-color: beige;
+    border-radius: 10px;
+
 }
 .body{
     display: flex;
@@ -43,7 +46,7 @@
     border-radius: 20px;
 }
 .posts{
-    background-color:aliceblue;
+    background-color:rgb(255, 248, 240);
     width: 70%;
     margin-left: 20px;
     margin-top: 20px;
@@ -61,7 +64,7 @@
     text-align: center; 
 }
 .resume-update,.user-description ,.user-wants-to-post,.user-wants-to-see-his-post{
-    background-color: blue;
+    background-color:beige;
     width: 70%;
     margin-left: 20px;
     margin-top: 20px;
@@ -71,6 +74,8 @@
     text-decoration: none;
     display: block;   
     color: black;
+    border: 2px solid black;
+    text-align: center;
 }
 
 .posted-user-profile,.posted-user-image,.posted-user-description,.peoples-comment{
@@ -78,6 +83,8 @@
     width: 90%;
     margin-left: 20px;
     border-radius: 20px;
+    min-height: 100px;
+    margin-top: 10px;
     height: auto;   
     text-align: center;         
 }

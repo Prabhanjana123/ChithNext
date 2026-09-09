@@ -35,7 +35,10 @@ function Find(){
                </div>
             </div>
             <div className="finding-part">
-                <h1>hi</h1>
+                <div className="search-bar-find">
+                  <input type="text" placeholder="Search people.."/>
+
+                </div>
             </div>
             </div>
 
