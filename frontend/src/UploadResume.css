@@ -6,7 +6,7 @@
     border-radius: 20px;
     height: 100vh;
 }
-.see-ur-existing-resume{
+.resume-themes{
     background-color:rgb(32, 144, 243);
     width: 70%;
     margin-left: 20px;
@@ -17,9 +17,22 @@
 }
 .add-resume{
     background-color:rgb(32, 144, 243);
-    width: 70%;
+    width: 30%;
     margin-left: 20px;
     margin-top: 20px;
     border-radius: 20px;
-    height: 150px;    
+    height: 100px;    
+}
+.resume-add-button{
+    margin-left: 70%;
+    margin-top:70px; 
+}
+.heading-for-resumeadd-page{
+    width:80% ;
+    height:auto ;
+    background-color: aqua;
+    margin-left: 20px;
+    margin-top: 20px;
+    border-radius: 10px;
+    text-align: center;
 }
