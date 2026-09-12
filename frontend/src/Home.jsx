@@ -35,6 +35,7 @@ function Home(){
                </div>
             </div>
             <div className="posts">
+               <div className="one-box">
                <div className="posted-user-profile">
                         <p>profile</p>
                </div>
@@ -46,6 +47,7 @@ function Home(){
                </div>
                <div className="peoples-comment">
                         <p>posted-user-description</p>
+               </div>
                </div>
             </div>
             </div>

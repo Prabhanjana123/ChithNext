@@ -35,7 +35,9 @@ function Oppurtunity(){
                </div>
             </div>
             <div className="Oppurnity-section">
-                <h1>hi</h1>
+                <div className="jobs-internships-display">
+                     <h1>u   can  join  here </h1>
+                </div>
             </div>
             </div>
 
