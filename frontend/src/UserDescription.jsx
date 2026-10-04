@@ -1,6 +1,24 @@
 import {Link} from "react-router-dom";
+import {useState} from "react" ;
 import "./UserDescription.css" ;
 function UserDescription(){
+
+   const [description,setDescription] =  useState("") ;
+   const saveDescription =  async()=>{
+      const userId = localStorage.getItem("userId");
+      const response =  await  fetch ("http://localhost:5000/description",{
+         method:"POST",
+         headers :{
+            "Content-Type" : "application/json"
+         },
+         body : JSON .stringify({
+            description : description,  
+            userId : userId
+         })
+      });
+      const  data =  await  response.text();
+       console.log(data) ;
+   };
     return(
         <div className="home">
             <div className="navbar">
@@ -38,9 +56,15 @@ function UserDescription(){
               <div className="heading">
                <h2>please  enter  your  complete professional  description </h2>
               </div>
-              <div className="descripion-typeing-space">
-                 enter your  description
-              </div>
+              <textarea
+              className="description-typeing-page"
+              placeholder="enter your professional description "
+              value ={description}
+              onChange={(e)=>setDescription(e.target.value)}
+              />
+              <button  onClick={saveDescription}>
+               Save Descrition 
+              </button>
             </div>
             </div>
         </div>        

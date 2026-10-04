@@ -6,6 +6,21 @@ function CreatePost(){
    const [image,setImage] = useState(null);
 
    const navigate =   useNavigate() ;
+
+   const  createpost =  async () =>  {
+      const formData = new FormData()  ;
+      const userId =  localStorage.getItem("userId");
+      console.log("userId:", userId);
+      formData.append("DESCRIPTION",description);
+      formData.append("image",image) ;
+      formData.append("userId",userId);
+      const response =  await fetch ("http://localhost:5000/posts",{
+         method : "POST",
+         body :formData
+      });
+      const data  =  await   response.json();
+      console.log(data) ;
+   } ;
     return(
         <div className="home">
             <div className="navbar">
@@ -68,7 +83,7 @@ function CreatePost(){
                        onChange={(e)=>setDescription(e.target.value)}
                        />   
                   </div> 
-              <button className="post_button">
+              <button className="post_button" onClick={createpost}>
                    Post
                   </button>  
             </div>

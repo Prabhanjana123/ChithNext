@@ -1,6 +1,20 @@
 import {Link} from "react-router-dom";
+import {useState} from "react" ;
 import "./UploadResume.css" ;
 function UploadResume(){
+   const [resume,setResume]=  useState(null) ;
+   const UploadResume = async()=>{
+      const userId = localStorage.getItem("userId");
+      const formData =  new FormData() ;
+      formData.append("resume",resume);
+      formData.append("userId",userId);
+      const response =  await fetch ("http://localhost:5000/resume",{
+         method :"POST",
+         body :formData,
+      });
+      const data =  await response.text();
+      console.log(data);
+      };
     return(
         <div className="home">
             <div className="navbar">
@@ -40,8 +54,15 @@ function UploadResume(){
                </div>
               
               <div className="add-resume">
-              <button className="resume-add-button"> add  resume </button>
+              <input
+              type="file"
+              accept=".pdf"
+              onChange={(e)=>setResume(e.target.files[0])}
+              />
               </div>
+              <button onClick={UploadResume}>
+                     Upload Resume 
+              </button>
               <div className="resume-themes">
                  here  we  will  have  different  themes   od  resume  
               </div>

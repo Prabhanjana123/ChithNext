@@ -14,11 +14,14 @@
     border-radius: 20px;
     height: 50px;    
 }
-.descripion-typeing-space{
-    background-color:rgb(32, 144, 243);
+.description-typeing-page{
     width: 70%;
+    height: 200px;
     margin-left: 20px;
     margin-top: 20px;
+    padding: 10px;
+    background-color: rgb(221, 229, 236);
     border-radius: 20px;
-    height: 200px;    
+    position: relative;
+    z-index: 100;
 }

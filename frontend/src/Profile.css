@@ -1,0 +1,103 @@
+.profile-editing-page{
+    background-color:aliceblue;
+    width: 70%;
+    margin-left: 20px;
+    margin-top: 20px;
+    border-radius: 20px;
+    height: 100vh;    
+}
+.profile-photo-banner{
+    background-color:rgb(119, 181, 235);
+    width: 70%;
+    margin-left: 20px;
+    margin-top: 20px;
+    border-radius: 20px;
+    height: 30vh;      
+}
+.profile-photo{
+    background-color: rgb(145, 102, 74);
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    margin-left: 5px;
+    margin-top: 10px;
+
+}
+
+.profile-photo img{
+    width: 100%  ;
+    height :100% ;
+    object-fit :cover ;
+    border-radius: 50% ;
+}
+
+.profile-photo  input{
+    display: none;
+}
+.small-about{
+    background-color:rgb(119, 181, 235);
+    width: 70%;
+    margin-left: 20px;
+    margin-top: 20px;
+    border-radius: 20px;
+    height: 30vh;       
+}
+
+.skills-section{
+    background-color:rgb(119, 181, 235);
+    width: 70%;
+    margin-left: 20px;
+    margin-top: 20px;
+    border-radius: 20px;
+    height: 30vh;     
+}
+
+.experience{
+    background-color:rgb(119, 181, 235);
+    width: 70%;
+    margin-left: 20px;
+    margin-top: 20px;
+    border-radius: 20px;
+    height: 30vh;      
+}
+
+.education{
+    background-color:rgb(119, 181, 235);
+    width: 70%;
+    margin-left: 20px;
+    margin-top: 20px;
+    border-radius: 20px;
+    height: 30vh;     
+}
+
+.small-about textarea{
+    background-color: azure;
+    width :90% ;
+    margin-left: 20px;
+    border-radius: 20px;  
+    height: 20vh;    
+}
+
+.experience textarea{
+    background-color: azure;
+    width :90% ;
+    margin-left: 20px;
+    border-radius: 20px;  
+    height: 20vh;    
+}
+
+.education textarea{
+    background-color: azure;
+    width :90% ;
+    margin-left: 20px;
+    border-radius: 20px;  
+    height: 20vh;    
+}
+
+.skills-section textarea{
+     background-color: azure;
+    width :90% ;
+    margin-left: 20px;
+    border-radius: 20px;  
+    height: 20vh;     
+}

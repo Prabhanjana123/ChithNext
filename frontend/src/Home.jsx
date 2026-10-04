@@ -1,6 +1,20 @@
 import "./Home.css"
 import {Link} from "react-router-dom";
+import { useState,useEffect } from "react";
 function Home(){
+   const [posts,setPosts] = useState([]) ;
+   
+   const  getPosts =  async () => {
+      const  response =   await fetch("http://localhost:5000/posts") ;
+
+      const data = await  response.json();
+
+      setPosts(data);
+   };
+
+      useEffect(() => {
+        getPosts();
+      }, []);
      return(
         <div className="home">
             <div className="navbar">
@@ -17,6 +31,9 @@ function Home(){
             <div className="profile">
                <div className="profile-sec">
                   <p>profile  img  edit  etc</p>
+                  <Link to ="/profile">
+                  <p>view profile </p>
+                  </Link>
                </div>
                <Link to ="/upload-resume" className="resume-update">
                   Upload Resume
@@ -34,22 +51,37 @@ function Home(){
                   <p>users-count </p>
                </div>
             </div>
-            <div className="posts">
-               <div className="one-box">
-               <div className="posted-user-profile">
-                        <p>profile</p>
+      <div className="posts">
+
+         {posts.map((post, index) => (
+
+         <div className="one-box" key={index}>
+
+             <div className="posted-user-profile">
+               <p>profile photo </p>
+             </div>
+
+             <div className="posted-user-image">
+                  {post.image &&  (
+                  <img src={`http://localhost:5000/uploads/${post.image}`}
+                  alt="post"
+                  />
+                )}
                </div>
-               <div className="posted-user-image">
-                        <p>image</p>
-               </div>
-               <div className="posted-user-description">
-                        <p>posted-user-description</p>
-               </div>
+
+             <div className="posted-user-description">
+                <p>{post.DESCRIPTION}</p>
+             </div>
+
                <div className="peoples-comment">
-                        <p>posted-user-description</p>
+                <p>peoples  reaction </p>
                </div>
-               </div>
+
             </div>
+
+         ))}
+
+      </div>
             </div>
         </div>
      );
