@@ -1,12 +1,46 @@
 import {Link} from "react-router-dom"
 import "./Profile.css"
-import { useState } from "react";
+import { useState ,useEffect} from "react";
+
 function Profile(){
     const [about ,setAbout] =  useState("") ;
     const [skills,setSkills] =  useState("") ;
     const [experience,setExperience] =  useState("") ;
     const [education,setEducation] = useState("");
     const [profilePhoto,setProfilePhoto] =  useState(null) ;
+    const [banner,setBanner] =  useState(null) ;
+    const userId = localStorage.getItem("userId");
+    const saveProfile =  async() =>{
+        const  response =  await  fetch("http://localhost:5000/profile",{
+            method : "POST",
+            headers : {
+                "Content-Type"  : "application/json"
+            },
+            body :JSON.stringify({
+                userId:userId,
+                about :about,
+                skills :skills,
+                experience :experience ,
+                education :education
+            })
+        });
+        const  data  = await response.text() ;
+        console.log(data);
+    };
+    const getProfile  =  async() =>{
+        const  response =  await  fetch(`http://localhost:5000/profile/${userId}`);
+        const data   =   await response.json() ;
+        if(data.length > 0){
+            setAbout(data[0].about);
+            setSkills(data[0].skills);
+            setExperience(data[0].experience);
+            setEducation(data[0].education);
+        }
+    };
+    useEffect(()=>{
+        getProfile();
+    },[]);
+    
     return(
         <div className="profile-page">
             <div className="navbar">
@@ -41,7 +75,7 @@ function Profile(){
                </div>
             </div>
             <div className="profile-editing-page">
-                <div className="profile-photo-banner">
+                <div className="profile-photo-banner">                   
                     <div className="profile-photo">
                        {profilePhoto?(
                         <img 
@@ -52,7 +86,7 @@ function Profile(){
                         <p>photo</p>
                        )
                     }
-                    </div>     
+                    </div>    
                     <label className="edit-photo">
                           Edit Photo 
                           <input
@@ -90,6 +124,9 @@ function Profile(){
                     value ={education}
                     onChange={(e)=>setEducation(e.target.value)}/>
                 </div>
+                <button onClick={saveProfile}>
+                    Save profile 
+                </button>
             </div>
             </div>
         </div>        

@@ -38,6 +38,9 @@ function Oppurtunity(){
                 <div className="jobs-internships-display">
                      <h1>u   can  join  here </h1>
                 </div>
+                <Link to = "/post-opportunity"  className="post-opportunity-button">
+                Post opportunity 
+                </Link>
             </div>
             </div>
 

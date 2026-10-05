@@ -1,6 +1,7 @@
 import "./Home.css"
 import {Link} from "react-router-dom";
 import { useState,useEffect } from "react";
+import UserCount from "./UsersCount";
 function Home(){
    const [posts,setPosts] = useState([]) ;
    
@@ -48,7 +49,7 @@ function Home(){
                  see posts
                </Link>
                <div className="users-count">
-                  <p>users-count </p>
+                  <UserCount/>
                </div>
             </div>
       <div className="posts">

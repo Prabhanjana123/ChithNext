@@ -35,7 +35,46 @@ function Message(){
                </div>
             </div>
             <div className="Messageing-part">
-                <h1>hi</h1>
+                <div className="chat-list">
+                  <h2>messages </h2>
+                
+                <input 
+                   type ="text"
+                   placeholder="Search chats .. "
+                   />
+                   <div className="chat-user">
+                     <h3>pranav </h3>
+                     <p>HOW  ARE  YOU ?  </p>
+                   </div>
+
+                   <div className="chat-user">
+                     <h3>aravind</h3>
+                     <p>hi </p>
+                   </div>
+                  </div>
+
+                  <div className="chat-window">
+                     <div className="chat-header">
+                        <h2>pranav</h2>
+                     </div>
+
+                     <div className="messages">
+                        <div className="received-message">
+                           <p>hi </p>
+                        </div>
+                        <div className="sent-message">
+                           <p>hello</p>
+                        </div>                        
+                     </div>
+                     <div className="message-input">
+                        <input 
+                        type="text"
+                        placeholder="type a message .. "
+                        />
+                        <button>send </button>
+                     </div>
+                  </div>
+
             </div>
             </div>
 

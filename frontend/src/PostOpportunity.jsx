@@ -1,17 +1,31 @@
 import { Link } from "react-router-dom";
-import {useState } from "react" ;
-import UserCount from "./UsersCount";
-import "./Find.css"
-function Find(){
-   const [search,setSearch] = useState("");
-   const [users,setUsers]=  useState([]) ;
-   const getuser =   async()=>{
-      const response=  await fetch(`http://localhost:5000/search-users?search=${search}`);
-      const data =  await  response.json();
-      setUsers(data);
-   };
+import { useState } from "react";
+import "./Oppurtunity.css"
+function PostOpportunity(){
+    const [title,setTitle] = useState("");
+    const [description,setDescription] = useState("");
+    const [type,setType] = useState("");
+    const [link,setLink] = useState(""); 
+    const createOpportunity =  async () =>{
+        const userId =  localStorage.getItem("userId");
+        const response  =  await fetch("http://localhost:5000/opportunities",{
+            method : "POST",
+            headers:{
+                "Content-type" :"application/json"
+            },
+            body :JSON.stringify({
+                user_id :userId ,
+                title :title,
+                description :  description,
+                type :type,
+                link:link
+            })
+        });
+        const data  =  await  response.text();
+        console.log(data);
+    };
     return(
-        <div className="Find">
+        <div className="PostOpportunity">
             <div className="navbar">
                 <div className="application-name"><h2>ChithNext</h2></div>
                  <div className="nav-links">
@@ -40,36 +54,15 @@ function Find(){
                  see posts
                </Link>
                <div className="users-count">
-                  <UserCount/>
+                  <p>users-count </p>
                </div>
             </div>
-            <div className="finding-part">
-                <div className="search-bar-find">
-                  <input type="text"
-                   placeholder="Search people.."
-                   value = {search}
-                   onChange={(e) => setSearch(e.target.value)}
-                   />
-                           
-                </div>
-                <button onClick={getuser}> Search </button>
-
-
-            <div className="search-results">
-               {users.map((user)=>(
-                  <div className="user-result" key ={user.id}>
-                     <p>{user.name}</p>
-                     <p>{user.email}</p>
-                  </div>
-               ))}
+            <div className="Oppurnity-posting-section">
+              
             </div>
-
-
-            </div>
-
             </div>
 
         </div>
     );
 }
-export  default Find ;
+export  default PostOpportunity ;

@@ -137,3 +137,124 @@ app.post("/login",async(req,res)=>{
 
     });
 });
+
+app.post("/profile",(req,res)=>{
+    const {userId,about,skills,experience,education}=  req.body ;
+    const sql = `
+    INSERT INTO  profile (user_id,about ,skills,experience,education)
+    VALUES (?,?,?,?,?)
+    ON DUPLICATE KEY UPDATE 
+    about =  VALUES(about),
+    skills =  VALUES(skills),
+    experience =  VALUES(experience),  
+    education =  VALUES(education)      
+    ` ;
+    db.query(
+        sql,
+        [userId,about,skills,experience,education],
+        (err,result)=>{
+            if(err){
+                console.log(err);
+                return  res.status(500).send("database error ");
+            }
+            res.send("profile  saved ");
+        }
+    );
+});
+app.get("/profile/:userId",(req,res)=>{
+    const  userId = req.params.userId ;
+    const sql  = "SELECT * FROM profile  WHERE user_id = ? ";
+    db.query(sql,[userId],(err,result)=>{
+        if(err){
+            console.log(err);
+            return res.status(500).send("data base error ");
+        }
+        res.send(result);
+    });
+});
+
+
+app.get("/search-users",(req,res)=>{
+    const search =  req.query.search ;
+    const sql = `
+    SELECT id,name,email
+    FROM users
+    WHERE name LIKE  ? `;
+    db.query(sql,[`%${search}%`],(err,result)=>{
+        if(err){
+            console.log(err);
+            return res.status(500).send("data base erorr ");
+        }
+        res.send(result) ;
+    });
+});
+
+app.post("/messages",(req,res)=>{
+    const {sender_id , receiver_id,message} =  req.body ;
+
+    const sql  =  `INSERT INTO messages (sender_id,receiver_id,message)
+    VALUES (?,?,?)`  ;
+    db.query(
+        sql,
+        [sender_id , receiver_id,message],
+        (err,result)=>{
+            if(err){
+                console.log(err);
+                return res.status(500).send("data base error ");
+            }
+            res.send("message sent ");
+        }
+    );
+});
+
+
+app.get("/users-count",(req,res)=>{
+    const sql  = "SELECT COUNT(*)  AS  total_users  FROM  users"  ;
+    db.query(sql,(err,result)=>{
+        if(err){
+            console.log(err);
+            return res.status(500).send("database error ");
+
+        }
+        res.send(result);
+    });
+});
+app.get("/messages/:user1/:user2",(req,res)=>{
+    const user1  =  req.params.user1 ;
+    const user2  =  req.params.user2 ;
+    const sql  =  `
+        SELECT * FROM messages
+        WHERE (sender_id  = ? AND receiver_id  = ?) OR 
+        (sender_id  = ? AND receiver_id  = ?)
+        ORDER  BY  created_at  ASC `;
+
+        db.query(
+            sql,
+            [user1,user2,user2,user1],
+            (err,result)=>{
+                if(err){
+                    console.log(err);
+                    return res.status(500).send("data base error ");
+                }
+                res.send(result);
+            }
+        );
+});
+
+app.post("/opportunities", (req,res)=>{
+    const {user_id,title,description,type,link} =  req.body ;
+    const sql = `INSERT INTO opportunities 
+    (user_id,title,description,type,link)
+    VALUES (?,?,?,?,?)`;
+    db.query(
+        sql,
+        [user_id,title,description,type,link],
+        (err,result)=>{
+            if(err){
+                console.log(err);
+                return res.status(500).send("data base error ");
+            }
+            res.send("opportunity created ");
+        }
+    );
+});
