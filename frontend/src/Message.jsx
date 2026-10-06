@@ -1,6 +1,38 @@
 import { Link } from "react-router-dom";
 import "./Message.css"
+import { useEffect, useState } from "react";
 function Message(){
+   const currentUser  = localStorage.getItem("userId");
+    const selectedUser  =  2 ;
+   const [messages,setMessages] =  useState([]) ;
+   const [message,setMessage] =  useState("");
+
+   const getMessages =  async ()=>{
+      console.log("get messages  called")
+      const response =  await fetch(`http://localhost:5000/messages/${currentUser}/${selectedUser}`);
+      const data  =  await response.json();
+      setMessages(data);
+   };
+   useEffect(()=>{
+      getMessages();
+   },[]);
+   const sendMessage =  async ()=>{
+      const response  =  await fetch("http://localhost:5000/messages",{
+         method :"POST",
+         headers :{
+            "Content-Type" : "application/json"
+         },
+         body:JSON.stringify({
+            sender_id : currentUser,
+            receiver_id :selectedUser,
+            message :message
+         })
+      });
+      const  data =  await response.text() ;
+      getMessages(data);
+      console.log(data);
+      setMessage("");
+   };
     return(
         <div className="Message">
             <div className="navbar">
@@ -59,19 +91,26 @@ function Message(){
                      </div>
 
                      <div className="messages">
-                        <div className="received-message">
-                           <p>hi </p>
-                        </div>
-                        <div className="sent-message">
-                           <p>hello</p>
-                        </div>                        
+                      {messages.map((msg)=>(
+                        <div key ={msg.id}
+                         className={
+                           String(msg.sender_id) === String(currentUser)
+                           ?"sent-message"
+                           :"received-message"
+                         }
+                         >
+                           <p>{msg.message}</p>
+                           </div>
+                      ))}                       
                      </div>
                      <div className="message-input">
                         <input 
                         type="text"
                         placeholder="type a message .. "
+                        value={message}
+                        onChange={(e)=>setMessage(e.target.value)}
                         />
-                        <button>send </button>
+                        <button  onClick={sendMessage}>send </button>
                      </div>
                   </div>
 

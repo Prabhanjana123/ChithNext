@@ -9,6 +9,7 @@ import Find from "./Find.jsx";
 import Oppurtunity from "./Oppurtunity.jsx";
 import Message from "./Message.jsx";
 import Profile from "./Profile.jsx"
+import PostOpportunity from "./PostOpportunity.jsx";
 function App() {
   return (
     <BrowserRouter>
@@ -21,6 +22,7 @@ function App() {
         <Route path="/see-post" element={<SeePost/>}/>
         <Route path = "/find"  element={<Find/>}/>
         <Route path = "/oppurtunities" element={<Oppurtunity/>}/>
+        <Route path = "/post-opportunity" element={<PostOpportunity/>}/>
         <Route path ="/msg" element={<Message/>}/>
         <Route path="/profile" element={<Profile/>}/>
       </Routes>

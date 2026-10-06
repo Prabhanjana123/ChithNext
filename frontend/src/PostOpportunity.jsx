@@ -58,7 +58,32 @@ function PostOpportunity(){
                </div>
             </div>
             <div className="Oppurnity-posting-section">
-              
+              <input 
+              type ="text"
+              placeholder="Oppurtunity title "
+              value={title}
+              onChange={(e)=>setTitle(e.target.value)}
+              />
+              <textarea
+              placeholder="desceibe the  oppurtunity"
+              value={description}
+              onChange={(e)=>setDescription(e.target.value)}
+              />
+              <input 
+              type ="text"
+              placeholder="type(intership/job/others)"
+              value={type}
+              onChange={(e)=>setType(e.target.value)}
+              /> 
+              <input 
+              type ="text"
+              placeholder="application link"
+              value={link}
+              onChange={(e)=>setLink(e.target.value)}
+              />      
+              <button onClick={createOpportunity}>
+                  Post opportunity 
+                </button>         
             </div>
             </div>
 

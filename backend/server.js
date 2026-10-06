@@ -258,3 +258,15 @@ app.post("/opportunities", (req,res)=>{
         }
     );
 });
+
+
+app.get("/opportunities",(req,res)=>{
+    const sql  =`SELECT  * FROM opportunities ORDER BY  created_at DESC ` ;
+    db.query(sql,(err,result)=>{
+        if(err){
+            console.log(err);
+            return  res.status(500).send("database error ");
+        }
+        res.send(result);
+    });
+});

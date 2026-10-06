@@ -1,6 +1,16 @@
 import { Link } from "react-router-dom";
+import { useState,useEffect } from "react";
 import "./Oppurtunity.css"
 function Oppurtunity(){
+   const [opportunities, setOpportunities]  =  useState([]);
+   const getOpportunities  =  async ()=>{
+      const response =  await fetch ("http://localhost:5000/opportunities");
+      const data = await response.json();
+      setOpportunities(data);
+   };
+   useEffect(()=>{
+      getOpportunities();
+   },[]);
     return(
         <div className="Oppurtunity">
             <div className="navbar">
@@ -36,8 +46,23 @@ function Oppurtunity(){
             </div>
             <div className="Oppurnity-section">
                 <div className="jobs-internships-display">
-                     <h1>u   can  join  here </h1>
-                </div>
+                     <h3>Opportunity </h3>
+                     {opportunities.map((opportunity)=>{
+                        return(
+                        <div className="opportunity-card"  key ={opportunity.id}>
+                           <p>{opportunity.title}</p>
+                           <p>{opportunity.description}</p>
+
+                           <p>
+                              <strong>Type : </strong>{opportunity.type}
+                           </p>
+                           <a  href={opportunity.link} target="_blank">
+                              Apply 
+                           </a>
+                           </div>
+                        );
+                     })} 
+                 </div>
                 <Link to = "/post-opportunity"  className="post-opportunity-button">
                 Post opportunity 
                 </Link>
