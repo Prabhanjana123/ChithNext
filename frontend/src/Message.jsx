@@ -3,10 +3,15 @@ import "./Message.css"
 import { useEffect, useState } from "react";
 function Message(){
    const currentUser  = localStorage.getItem("userId");
-    const selectedUser  =  2 ;
+   const [selectedUser,setSelectedUser]  =  useState(null) ;
    const [messages,setMessages] =  useState([]) ;
    const [message,setMessage] =  useState("");
-
+   const [users,setUsers] =  useState([]);
+   const getUsers =  async()=>{
+     const response =  await fetch(`http://localhost:5000/users?currentUser=${currentUser}`);
+     const data  =  await response.json();
+     setUsers(data);
+   };
    const getMessages =  async ()=>{
       console.log("get messages  called")
       const response =  await fetch(`http://localhost:5000/messages/${currentUser}/${selectedUser}`);
@@ -14,10 +19,15 @@ function Message(){
       setMessages(data);
    };
    useEffect(()=>{
-      getMessages();
+      if  (selectedUser != null){
+         getMessages();
+      }
+   },[selectedUser]);
+   useEffect(()=>{
+      getUsers();
    },[]);
    const sendMessage =  async ()=>{
-      const response  =  await fetch("http://localhost:5000/messages",{
+      const response  =  await fetch(`http://localhost:5000/messages`,{
          method :"POST",
          headers :{
             "Content-Type" : "application/json"
@@ -29,10 +39,13 @@ function Message(){
          })
       });
       const  data =  await response.text() ;
-      getMessages(data);
+      getMessages();
       console.log(data);
       setMessage("");
    };
+   const selectedUserName  =  users.find(
+      (user) => user.id  === selectedUser
+   );
     return(
         <div className="Message">
             <div className="navbar">
@@ -74,20 +87,21 @@ function Message(){
                    type ="text"
                    placeholder="Search chats .. "
                    />
-                   <div className="chat-user">
-                     <h3>pranav </h3>
-                     <p>HOW  ARE  YOU ?  </p>
-                   </div>
-
-                   <div className="chat-user">
-                     <h3>aravind</h3>
-                     <p>hi </p>
-                   </div>
+                   {users.map((user)=>(
+                     <div 
+                     className="chat-user"
+                     key = {user.id}
+                     onClick={()=> setSelectedUser(user.id)}
+                     >
+                        <h3>{user.name}</h3>
+                        <p>Click to open chat </p>
+                        </div>
+                   ))}
                   </div>
 
                   <div className="chat-window">
                      <div className="chat-header">
-                        <h2>pranav</h2>
+                        <h2>{selectedUserName?.name}</h2>
                      </div>
 
                      <div className="messages">

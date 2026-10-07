@@ -270,3 +270,15 @@ app.get("/opportunities",(req,res)=>{
         res.send(result);
     });
 });
+
+app.get("/users",(req,res)=>{
+    const sql = `SELECT id,name,email FROM users `;
+    db.query(sql,(err,result)=>{
+        if(err){
+            console.log(err) ;
+            return res.status(500).send("database error ");
+
+        }
+        res.send(result);
+    });
+});
